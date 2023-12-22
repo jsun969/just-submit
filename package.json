@@ -1,0 +1,48 @@
+{
+  "name": "submit-form",
+  "version": "0.0.0",
+  "description": "Submit simple form, with safe types, without management!",
+  "main": "",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "simple-git-hooks",
+    "format": "prettier --write \"**/*.{js,ts,tsx,css,md,cjs}\"",
+    "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
+    "test": ""
+  },
+  "keywords": [
+    "form",
+    "submit",
+    "react",
+    "vanilla"
+  ],
+  "author": "jsun969",
+  "license": "MIT",
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "simple-git-hooks": "^2.9.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,css,md}": [
+      "prettier --write"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  }
+}
