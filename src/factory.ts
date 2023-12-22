@@ -36,7 +36,7 @@ export const factory =
         const formValues = {} as FormValues;
         for (const [name, type] of Object.entries(formValuesType)) {
           const valueFromFormData = formData.get(name);
-          // form data value can be null when checkbox (or any other boolean input) is not checked
+          // Form data value can be null when checkbox (or any other boolean input) is not checked
           if (type === 'boolean' && valueFromFormData === null) {
             formValues[name] = false;
             continue;
