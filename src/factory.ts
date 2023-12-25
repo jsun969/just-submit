@@ -13,7 +13,7 @@ const DEFAULT_VALUE_WHEN_ERROR: FieldStrTypeMap = {
   string: '',
   number: -1,
   boolean: false,
-  date: new Date(),
+  date: new Date('2005-03-12'),
 };
 
 type ConvertFieldFns = {
