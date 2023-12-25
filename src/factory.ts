@@ -35,14 +35,14 @@ export const factory =
         const formData = prepareFormData(formEvent);
         const formValues = {} as FormValues;
         for (const [name, type] of Object.entries(formValuesType)) {
-          const valueFromFormData = formData.get(name);
+          const valueInFormData = formData.get(name);
           // Form data value can be null when checkbox (or any other boolean input) is not checked
-          if (type === 'boolean' && valueFromFormData === null) {
+          if (type === 'boolean' && valueInFormData === null) {
             formValues[name] = false;
             continue;
           }
-          const errorMessage = `[Form Field Converting Error]\nName: ${name}\nValue: ${valueFromFormData}\nTarget Type: ${type}`;
-          if (typeof valueFromFormData !== 'string') {
+          const errorMessage = `[Form Field Converting Error]\nName: ${name}\nValue: ${valueInFormData}\nTarget Type: ${type}`;
+          if (typeof valueInFormData !== 'string') {
             console.error(errorMessage);
             formValues[name] = DEFAULT_VALUE_WHEN_ERROR[type];
             continue;
@@ -58,9 +58,16 @@ export const factory =
               }
               return res;
             },
-            date: (value) => new Date(value),
+            date: (value) => {
+              const res = new Date(value);
+              if (isNaN(res.getTime())) {
+                console.error(errorMessage);
+                return DEFAULT_VALUE_WHEN_ERROR['date'];
+              }
+              return res;
+            },
           };
-          formValues[name] = convertFieldFns[type](valueFromFormData);
+          formValues[name] = convertFieldFns[type](valueInFormData);
         }
         submitFn(formValues as TFormValues, formEvent);
       };
