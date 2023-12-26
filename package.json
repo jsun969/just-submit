@@ -3,13 +3,37 @@
   "version": "0.0.0",
   "description": "Submit simple form, with safe types, without management!",
   "type": "module",
-  "main": "",
+  "main": "dist/vanilla.js",
+  "types": "dist/vanilla.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/vanilla.d.ts",
+      "import": "./dist/vanilla.js",
+      "default": "./dist/vanilla.js",
+      "require": "./dist/vanilla.cjs"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "default": "./dist/react.js",
+      "require": "./dist/react.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "simple-git-hooks",
     "format": "prettier --write \"**/*.{js,ts,tsx,css,md,cjs}\"",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
-    "test": "vitest"
+    "test": "vitest",
+    "build": "tsup",
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [
     "form",
