@@ -2,29 +2,7 @@ import type { MockInstance } from 'vitest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { factory } from '../src/factory';
-import type {
-  FormValuesStrTypes,
-  GetFormValuesFromStrTypes,
-} from '../src/types';
-
-const mockFormDataObj = {
-  string: 'text',
-  number: '6',
-  date: '2023-12-24',
-  boolean: 'on',
-};
-const mockFormValuesTypes = {
-  string: 'string',
-  number: 'number',
-  date: 'date',
-  boolean: 'boolean',
-} satisfies FormValuesStrTypes;
-const mockFormResult: GetFormValuesFromStrTypes<typeof mockFormValuesTypes> = {
-  string: 'text',
-  number: 6,
-  date: new Date('2023-12-24'),
-  boolean: true,
-};
+import { mockFormDataObj, mockFormResult, mockFormValuesTypes } from './mock';
 
 const objectToFormData = (obj: Record<string, string>) => {
   const formData = new FormData();
