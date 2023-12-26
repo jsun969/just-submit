@@ -43,6 +43,7 @@
   ],
   "author": "jsun969",
   "license": "MIT",
+  "repository": "github:jsun969/just-submit",
   "devDependencies": {
     "@testing-library/dom": "^9.3.3",
     "@testing-library/jest-dom": "^6.1.5",
