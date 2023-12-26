@@ -41,7 +41,7 @@ export const factory =
             formValues[name] = false;
             continue;
           }
-          const errorMessage = `[Form Field Converting Error]\nName: ${name}\nValue: ${valueInFormData}\nTarget Type: ${type}`;
+          const errorMessage = `[Form Field Converting Error]\nName: ${name}\nValue: ${valueInFormData}\nTarget Type: ${type}\n\nSee: https://github.com/jsun969/just-submit#form-field-converting-error`;
           if (typeof valueInFormData !== 'string') {
             console.error(errorMessage);
             formValues[name] = DEFAULT_VALUE_WHEN_ERROR[type];
