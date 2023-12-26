@@ -31,7 +31,7 @@ export const factory =
   ) => {
     const handleSubmit =
       (submitFn: SubmitFn<TFormEvent, TFormValues>) =>
-      (formEvent: TFormEvent) => {
+      async (formEvent: TFormEvent) => {
         const formData = prepareFormData(formEvent);
         const formValues = {} as FormValues;
         for (const [name, type] of Object.entries(formValuesType)) {
@@ -69,7 +69,7 @@ export const factory =
           };
           formValues[name] = convertFieldFns[type](valueInFormData);
         }
-        submitFn(formValues as TFormValues, formEvent);
+        await submitFn(formValues as TFormValues, formEvent);
       };
     return handleSubmit;
   };

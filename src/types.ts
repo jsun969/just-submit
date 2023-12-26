@@ -18,4 +18,4 @@ export type GetFormValuesFromStrTypes<
 export type SubmitFn<TFormEvent, TFormValues extends FormValues> = (
   data: TFormValues,
   formEvent?: TFormEvent,
-) => void;
+) => void | Promise<void>;
