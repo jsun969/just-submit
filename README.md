@@ -27,48 +27,24 @@ pnpm add just-submit
 
 ## 🎯 Quickstart
 
-> [!TIP]  
-> For other frameworks, check [Examples](#-examples)
+> [!IMPORTANT]  
+> Don't forget to add a **default value** for **optional** fields
 
-```tsx
-import { createSubmit } from 'just-submit/react';
+```ts
+const handleSubmit = createSubmit({
+  fullName: 'string',
+  age: 'number',
+  birthday: 'date',
+  wantGift: 'boolean',
+});
 
-const Form = () => {
-  const handleSubmit = createSubmit({
-    fullName: 'string',
-    age: 'number',
-    birthday: 'date',
-    wantGift: 'boolean',
-  });
-  return (
-    <form
-      onSubmit={handleSubmit((data) => {
-        //                    ^ { fullName: string; age: number; birthday: Date; wantGift: boolean }
-        // ... (Your submission code with SAFE TYPES)
-      })}
-    >
-      <input type="text" name="fullName" required />
-      <input type="number" name="age" min={0} required />
-      <input type="date" name="birthday" defaultValue="2005-03-12" />
-      {/*                                ^ Don't forget to add a default value for optional fields */}
-      <input type="checkbox" name="wantGift" />
-      <button type="submit">SUBMIT</button>
-    </form>
-  );
-};
+// Inside form submit event handler
+handleSubmit((data, event) => {
+  // data  - { fullName: string; age: number; birthday: Date; wantGift: boolean }
+  // event - (optional) submit event, specific to the used framework
+  // ... (Your submission code with SAFE TYPES)
+});
 ```
-
-## 🔍 Troubleshooting
-
-### Form Field Converting Error
-
-This library can only convert `string` values from `FormData`.  
-For **optional** fields, add a **default value** in case they are `null` in submission.
-
-### How to control form? (watch value changes / form state / etc.)
-
-This library is for simple forms that don't need to be controlled.  
-If you are working on a complex form, try [react-hook-form](https://github.com/react-hook-form/react-hook-form) instead.
 
 ## 📚 Examples
 
@@ -129,6 +105,18 @@ const Form = () => {
   );
 };
 ```
+
+## 🔍 Troubleshooting
+
+### Form Field Converting Error
+
+This library can only convert `string` values from `FormData`.  
+For **optional** fields, add a **default value** in case they are `null` in submission.
+
+### How to control form? (watch value changes / form state / etc.)
+
+This library is for simple forms that don't need to be controlled.  
+If you are working on a complex form, try [react-hook-form](https://github.com/react-hook-form/react-hook-form) instead.
 
 ## 🕹 API
 
