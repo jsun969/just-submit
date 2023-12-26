@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { vi } from 'vitest';
 
 import { createSubmit } from '../../src/vanilla';
 import { mockFormDataObj, mockFormResult, mockFormValuesTypes } from '../mock';
