@@ -19,6 +19,7 @@ describe('react', () => {
         <button type="submit">SUBMIT</button>
       </form>,
     );
+
     await userEvent.type(
       screen.getByTestId('string'),
       mockFormDataObj['string'],
@@ -32,6 +33,7 @@ describe('react', () => {
       target: { value: mockFormDataObj['date'] },
     });
     await userEvent.click(screen.getByText('SUBMIT'));
+
     expect(dataCallback).toHaveBeenCalledOnce();
     expect(dataCallback).toHaveBeenCalledWith(
       mockFormResult,
