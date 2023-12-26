@@ -2,6 +2,7 @@
   "name": "just-submit",
   "version": "0.0.0",
   "description": "Submit simple form, with safe types, without management!",
+  "type": "module",
   "main": "",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
