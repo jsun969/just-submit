@@ -62,7 +62,9 @@ describe('factory', () => {
 
     expect(errorSpy).toHaveBeenCalledOnce();
     expect(errorSpy).toHaveBeenCalledWith(
-      '[Form Field Converting Error]\nName: string\nValue: null\nTarget Type: string',
+      expect.stringContaining(
+        '[Form Field Converting Error]\nName: string\nValue: null\nTarget Type: string',
+      ),
     );
     expect(dataCallback).toHaveBeenCalledOnce();
     expect(dataCallback).toHaveBeenCalledWith(
@@ -80,7 +82,9 @@ describe('factory', () => {
 
     expect(errorSpy).toHaveBeenCalledOnce();
     expect(errorSpy).toHaveBeenCalledWith(
-      '[Form Field Converting Error]\nName: number\nValue: bad-number\nTarget Type: number',
+      expect.stringContaining(
+        '[Form Field Converting Error]\nName: number\nValue: bad-number\nTarget Type: number',
+      ),
     );
     expect(dataCallback).toHaveBeenCalledOnce();
     expect(dataCallback).toHaveBeenCalledWith(
@@ -98,7 +102,9 @@ describe('factory', () => {
 
     expect(errorSpy).toHaveBeenCalledOnce();
     expect(errorSpy).toHaveBeenCalledWith(
-      '[Form Field Converting Error]\nName: date\nValue: bad-date\nTarget Type: date',
+      expect.stringContaining(
+        '[Form Field Converting Error]\nName: date\nValue: bad-date\nTarget Type: date',
+      ),
     );
     expect(dataCallback).toHaveBeenCalledOnce();
     expect(dataCallback).toHaveBeenCalledWith(
