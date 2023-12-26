@@ -104,7 +104,31 @@ form.addEventListener(
 
 ### React
 
-See [Quickstart](#-quickstart)
+```tsx
+import { createSubmit } from 'just-submit/react';
+
+const Form = () => {
+  const handleSubmit = createSubmit({
+    fullName: 'string',
+    age: 'number',
+    birthday: 'date',
+    wantGift: 'boolean',
+  });
+  return (
+    <form
+      onSubmit={handleSubmit((data) => {
+        // ...
+      })}
+    >
+      <input type="text" name="fullName" required />
+      <input type="number" name="age" min={0} required />
+      <input type="date" name="birthday" defaultValue="2005-03-12" />
+      <input type="checkbox" name="wantGift" />
+      <button type="submit">SUBMIT</button>
+    </form>
+  );
+};
+```
 
 ## 🕹 API
 
