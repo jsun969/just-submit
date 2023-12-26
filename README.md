@@ -41,7 +41,7 @@ const handleSubmit = createSubmit({
 // Inside form submit event handler
 handleSubmit((data, event) => {
   // data  - { fullName: string; age: number; birthday: Date; wantGift: boolean }
-  // event - (optional) submit event, specific to the used framework
+  // event - The submit event, unique in different frameworks (optional)
   // ... (Your submission code with SAFE TYPES)
 });
 ```
@@ -117,7 +117,3 @@ For **optional** fields, add a **default value** in case they are `null` in subm
 
 This library is for simple forms that don't need to be controlled.  
 If you are working on a complex form, try [react-hook-form](https://github.com/react-hook-form/react-hook-form) instead.
-
-## 🕹 API
-
-WIP
