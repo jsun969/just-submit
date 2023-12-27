@@ -3,23 +3,10 @@
   "version": "0.0.2",
   "description": "Submit simple form, with safe types, without management!",
   "type": "module",
-  "main": "dist/vanilla.js",
-  "types": "dist/vanilla.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/vanilla.d.ts",
-      "import": "./dist/vanilla.js",
-      "default": "./dist/vanilla.js",
-      "require": "./dist/vanilla.cjs"
-    },
-    "./react": {
-      "types": "./dist/react.d.ts",
-      "import": "./dist/react.js",
-      "default": "./dist/react.js",
-      "require": "./dist/react.cjs"
-    },
-    "./package.json": "./package.json"
-  },
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "browser": "dist/index.global.js",
   "files": [
     "dist",
     "LICENSE",

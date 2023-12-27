@@ -39,10 +39,8 @@ const handleSubmit = createSubmit({
 });
 
 // Inside form submit event handler
-handleSubmit((data, event) => {
-  // data  - { fullName: string; age: number; birthday: Date; wantGift: boolean }
-  // event - The submit event, unique in different frameworks (optional)
-  // ... (Your submission code with SAFE TYPES)
+handleSubmit((data) => {
+  //          ^ { fullName: string; age: number; birthday: Date; wantGift: boolean }
 });
 ```
 
@@ -81,7 +79,7 @@ form.addEventListener(
 ### React
 
 ```tsx
-import { createSubmit } from 'just-submit/react';
+import { createSubmit } from 'just-submit';
 
 const Form = () => {
   const handleSubmit = createSubmit({

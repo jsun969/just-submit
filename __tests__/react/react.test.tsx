@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { createSubmit } from '../../src/react';
+import { createSubmit } from '../../src/create-submit';
 import { mockFormDataObj, mockFormResult, mockFormValuesTypes } from '../mock';
 
 describe('react', () => {
@@ -34,9 +34,6 @@ describe('react', () => {
     await userEvent.click(screen.getByText('SUBMIT'));
 
     expect(dataCallback).toHaveBeenCalledOnce();
-    expect(dataCallback).toHaveBeenCalledWith(
-      mockFormResult,
-      expect.anything(), // Form event
-    );
+    expect(dataCallback).toHaveBeenCalledWith(mockFormResult);
   });
 });

@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 
-import { createSubmit } from '../../src/vanilla';
+import { createSubmit } from '../../src/create-submit';
 import { mockFormDataObj, mockFormResult, mockFormValuesTypes } from '../mock';
 
 describe('vanilla', () => {
@@ -36,9 +36,6 @@ describe('vanilla', () => {
     await userEvent.click(screen.getByText('SUBMIT'));
 
     expect(dataCallback).toHaveBeenCalledOnce();
-    expect(dataCallback).toHaveBeenCalledWith(
-      mockFormResult,
-      expect.anything(), // Form event
-    );
+    expect(dataCallback).toHaveBeenCalledWith(mockFormResult);
   });
 });

@@ -15,7 +15,10 @@ export type GetFormValuesFromStrTypes<
   [PField in keyof TFormValuesStrTypes]: FieldStrTypeMap[TFormValuesStrTypes[PField]];
 };
 
-export type SubmitFn<TFormEvent, TFormValues extends FormValues> = (
+export type FormEvent = {
+  preventDefault: () => void;
+  currentTarget: unknown;
+};
+export type SubmitFn<TFormValues extends FormValues> = (
   data: TFormValues,
-  formEvent?: TFormEvent,
 ) => void | Promise<void>;
