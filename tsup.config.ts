@@ -5,6 +5,7 @@ export default defineConfig({
   format: ['esm', 'iife'],
   platform: 'browser',
   dts: true,
+  sourcemap: true,
   splitting: false,
   clean: true,
   minify: true,
