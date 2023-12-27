@@ -18,7 +18,7 @@ describe('vanilla', () => {
         <button type="submit">SUBMIT</button>
       </form>
     `;
-    const form = document.querySelector('form') as HTMLFormElement;
+    const form = document.querySelector('form')!;
     form.addEventListener('submit', handleSubmit(dataCallback));
 
     await userEvent.type(
