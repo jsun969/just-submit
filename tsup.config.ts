@@ -9,4 +9,5 @@ export default defineConfig({
   splitting: false,
   clean: true,
   minify: true,
+  globalName: 'JustSubmit',
 });
