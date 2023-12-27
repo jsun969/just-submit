@@ -3,7 +3,6 @@
   "version": "0.0.3",
   "description": "Submit simple form, with safe types, without management!",
   "type": "module",
-  "source": "src/index.ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "browser": "dist/index.global.js",
