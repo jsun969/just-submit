@@ -28,7 +28,7 @@ pnpm add just-submit
 ## 🎯 Quickstart
 
 > [!IMPORTANT]  
-> Don't forget to add a **default value** for **optional** fields
+> Don't forget to add a **default value** for **optional** fields.
 
 ```ts
 const handleSubmit = createSubmit({
@@ -45,36 +45,6 @@ handleSubmit((data) => {
 ```
 
 ## 📚 Examples
-
-### Vanilla
-
-```html
-<form id="simpleForm">
-  <input type="text" name="fullName" required />
-  <input type="number" name="age" min="0" required />
-  <input type="date" name="birthday" value="2005-03-12" />
-  <input type="checkbox" name="wantGift" />
-  <button type="submit">SUBMIT</button>
-</form>
-```
-
-```ts
-import { createSubmit } from 'just-submit';
-
-const handleSubmit = createSubmit({
-  fullName: 'string',
-  age: 'number',
-  birthday: 'date',
-  wantGift: 'boolean',
-});
-const form = document.getElementById('simpleForm') as HTMLFormElement;
-form.addEventListener(
-  'submit',
-  handleSubmit((data) => {
-    // ...
-  }),
-);
-```
 
 ### React
 
@@ -102,6 +72,72 @@ const Form = () => {
     </form>
   );
 };
+```
+
+### Vanilla
+
+```html
+<form>
+  <input type="text" name="fullName" required />
+  <input type="number" name="age" min="0" required />
+  <input type="date" name="birthday" value="2005-03-12" />
+  <input type="checkbox" name="wantGift" />
+  <button type="submit">SUBMIT</button>
+</form>
+```
+
+```ts
+import { createSubmit } from 'just-submit';
+
+const handleSubmit = createSubmit({
+  fullName: 'string',
+  age: 'number',
+  birthday: 'date',
+  wantGift: 'boolean',
+});
+const form = document.querySelector('form')!;
+form.addEventListener(
+  'submit',
+  handleSubmit((data) => {
+    // ...
+  }),
+);
+```
+
+### CDN (NOT Recommended)
+
+> [!WARNING]  
+> Using CDN will **lose** safe types!
+
+```html
+<head>
+  <script src="https://unpkg.com/just-submit"></script>
+</head>
+<body>
+  <form>
+    <input type="text" name="fullName" required />
+    <input type="number" name="age" min="0" required />
+    <input type="date" name="birthday" value="2005-03-12" />
+    <input type="checkbox" name="wantGift" />
+    <button type="submit">SUBMIT</button>
+  </form>
+  <script>
+    const { createSubmit } = JustSubmit;
+    const handleSubmit = createSubmit({
+      fullName: 'string',
+      age: 'number',
+      birthday: 'date',
+      wantGift: 'boolean',
+    });
+    const form = document.querySelector('form');
+    form.addEventListener(
+      'submit',
+      handleSubmit((data) => {
+        // ...
+      }),
+    );
+  </script>
+</body>
 ```
 
 ## 🔍 Troubleshooting
