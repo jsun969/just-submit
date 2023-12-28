@@ -17,7 +17,7 @@ Submit simple form, with safe types, without management!
 - ⚡ Speedy DX
 - 🧪 Well-Tested
 - 🍃 Ultra Light
-- 🧩 Framework-Agnostic `WIP`
+- 🧩 Framework-Agnostic
 
 ## 📦 Install
 
