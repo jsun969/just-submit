@@ -74,6 +74,33 @@ const Form = () => {
 };
 ```
 
+### Vue
+
+```vue
+<script setup lang="ts">
+import { createSubmit } from 'just-submit';
+
+const handleSubmit = createSubmit({
+  fullName: 'string',
+  age: 'number',
+  birthday: 'date',
+  wantGift: 'boolean',
+})((data) => {
+  // ...
+});
+</script>
+
+<template>
+  <form @submit="handleSubmit">
+    <input type="text" name="fullName" required />
+    <input type="number" name="age" min="0" required />
+    <input type="date" name="birthday" value="2005-03-12" />
+    <input type="checkbox" name="wantGift" />
+    <button type="submit">SUBMIT</button>
+  </form>
+</template>
+```
+
 ### Vanilla
 
 ```html
