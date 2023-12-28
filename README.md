@@ -171,10 +171,18 @@ form.addEventListener(
 
 ### Form Field Converting Error
 
-This library can only convert `string` values from `FormData`.  
+This library can only convert `string` values from `FormData`.
+
 For **optional** fields, add a **default value** in case they are `null` in submission.
 
 ### How to control form? (watch value changes / form state / etc.)
 
-This library is for simple forms that don't need to be controlled.  
+This library is for simple forms that don't need to be controlled.
+
 If you are working on a complex form, try [react-hook-form](https://github.com/react-hook-form/react-hook-form) instead.
+
+### Can I use it with ...(other framework) ?
+
+You probably **CAN**! The `handleSubmit` function can be used in any submit event that has `preventDefault` and `currentTarget`.
+
+The examples provided include only the frameworks that have passed our tests. If you find this library works with any other framework, please don't hesitate to **create a PR** for it. We greatly appreciate your contributions and support!
