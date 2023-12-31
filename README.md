@@ -131,10 +131,7 @@ form.addEventListener(
 );
 ```
 
-### CDN (NOT Recommended)
-
-> [!WARNING]  
-> Using CDN will **lose** safe types!
+### CDN
 
 ```html
 <head>
