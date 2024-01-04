@@ -19,6 +19,37 @@ type ConvertFieldFns = {
   [PType in FieldStrType]: (value: string) => FieldStrTypeMap[PType];
 };
 
+/**
+ * Creates a submission handler for a form with specified field types.
+ * This function streamlines the process of handling form submissions by
+ * automatically validating and parsing form data according to the provided
+ * field type specifications.
+ *
+ * @param formValuesType - An object that maps each form field's name to its expected data type.
+ *                         Supported data types are `string`, `number`, `date`, and `boolean`.
+ *                         This mapping is used to parse the form data from string.
+ *
+ * @returns A function that can be used as an event handler for form submission.
+ *          This handler takes a callback function as an argument, which will be
+ *          called with the parsed form data if the validation is successful.
+ *          The form data is passed as an object with key-value pairs corresponding
+ *          to form field names and their parsed values.
+ *
+ * @example
+ * const handleSubmit = createSubmit({
+ *   fullName: 'string',
+ *   age: 'number',
+ *   birthday: 'date',
+ *   wantGift: 'boolean',
+ * });
+ * const form = document.querySelector('form');
+ * form.addEventListener(
+ *   'submit',
+ *   handleSubmit((data) => {
+ *     // ...
+ *   }),
+ * );
+ */
 export const createSubmit = <
   TFormValuesStrTypes extends FormValuesStrTypes,
   TFormValues extends
