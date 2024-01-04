@@ -15,6 +15,7 @@ Submit simple form, with safe types, without management!
 
 - 🔒 TYPE SAFE
 - ⚡ Speedy DX
+- 👶 Beginner-Friendly
 - 🧪 Well-Tested
 - 🍃 Ultra Light
 - 🧩 Framework-Agnostic
