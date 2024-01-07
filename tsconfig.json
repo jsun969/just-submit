@@ -3,7 +3,7 @@
     "sourceMap": true,
     "target": "ES6",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "noEmit": true,
