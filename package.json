@@ -1,6 +1,6 @@
 {
   "name": "just-submit",
-  "version": "0.0.6",
+  "version": "0.0.7-beta.1",
   "description": "Submit simple form, with safe types, without management!",
   "type": "module",
   "main": "dist/index.js",
