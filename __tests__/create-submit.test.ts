@@ -1,5 +1,3 @@
-import type { MockInstance } from 'vitest';
-
 import { createSubmit } from '../src/create-submit';
 import { mockFormDataObj, mockFormResult, mockFormValuesTypes } from './mock';
 
@@ -16,11 +14,6 @@ const formDataToCurrentTarget = (formData: Record<string, string>) => {
 describe('factory', () => {
   const dataCallback = vi.fn();
   const preventDefault = vi.fn();
-  let errorSpy: MockInstance<unknown[], void>;
-
-  beforeEach(() => {
-    errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-  });
 
   afterEach(() => {
     vi.restoreAllMocks();
@@ -34,7 +27,6 @@ describe('factory', () => {
     const submit = createSubmit(mockFormValuesTypes);
     submit(dataCallback)(event);
 
-    expect(errorSpy).not.toHaveBeenCalled();
     expect(dataCallback).toHaveBeenCalledOnce();
     expect(dataCallback).toHaveBeenCalledWith(mockFormResult);
   });
@@ -48,7 +40,6 @@ describe('factory', () => {
     const submit = createSubmit(mockFormValuesTypes);
     submit(dataCallback)(event);
 
-    expect(errorSpy).not.toHaveBeenCalled();
     expect(dataCallback).toHaveBeenCalledOnce();
     expect(dataCallback).toHaveBeenCalledWith({
       ...mockFormResult,
@@ -63,19 +54,11 @@ describe('factory', () => {
       currentTarget: formDataToCurrentTarget(formDataMissingValue),
     };
     const submit = createSubmit(mockFormValuesTypes);
-    submit(dataCallback)(event);
 
-    expect(errorSpy).toHaveBeenCalledOnce();
-    expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining(
-        '[Form Field Converting Error]\nName: string\nValue: null\nTarget Type: string',
-      ),
+    expect(() => submit(dataCallback)(event)).rejects.toThrowError(
+      '[Form Field Converting Error]\nName: string\nValue: null\nTarget Type: string',
     );
-    expect(dataCallback).toHaveBeenCalledOnce();
-    expect(dataCallback).toHaveBeenCalledWith({
-      ...mockFormResult,
-      string: '',
-    });
+    expect(dataCallback).not.toHaveBeenCalled();
   });
 
   it('should show error when number cannot be converted', () => {
@@ -87,19 +70,11 @@ describe('factory', () => {
       }),
     };
     const submit = createSubmit(mockFormValuesTypes);
-    submit(dataCallback)(event);
 
-    expect(errorSpy).toHaveBeenCalledOnce();
-    expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining(
-        '[Form Field Converting Error]\nName: number\nValue: bad-number\nTarget Type: number',
-      ),
+    expect(() => submit(dataCallback)(event)).rejects.toThrowError(
+      '[Form Field Converting Error]\nName: number\nValue: bad-number\nTarget Type: number',
     );
-    expect(dataCallback).toHaveBeenCalledOnce();
-    expect(dataCallback).toHaveBeenCalledWith({
-      ...mockFormResult,
-      number: -1,
-    });
+    expect(dataCallback).not.toHaveBeenCalled();
   });
 
   it('should show error when date cannot be converted', () => {
@@ -111,18 +86,10 @@ describe('factory', () => {
       }),
     };
     const submit = createSubmit(mockFormValuesTypes);
-    submit(dataCallback)(event);
 
-    expect(errorSpy).toHaveBeenCalledOnce();
-    expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining(
-        '[Form Field Converting Error]\nName: date\nValue: bad-date\nTarget Type: date',
-      ),
+    expect(() => submit(dataCallback)(event)).rejects.toThrowError(
+      '[Form Field Converting Error]\nName: date\nValue: bad-date\nTarget Type: date',
     );
-    expect(dataCallback).toHaveBeenCalledOnce();
-    expect(dataCallback).toHaveBeenCalledWith({
-      ...mockFormResult,
-      date: new Date('2005-03-12'),
-    });
+    expect(dataCallback).not.toHaveBeenCalled();
   });
 });
