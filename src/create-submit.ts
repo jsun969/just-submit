@@ -8,13 +8,6 @@ import type {
   SubmitFn,
 } from './types';
 
-const DEFAULT_VALUE_WHEN_ERROR: FieldStrTypeMap = {
-  string: '',
-  number: -1,
-  boolean: false,
-  date: new Date('2005-03-12'),
-};
-
 type ConvertFieldFns = {
   [PType in FieldStrType]: (value: string) => FieldStrTypeMap[PType];
 };
@@ -72,9 +65,7 @@ export const createSubmit = <
         }
         const errorMessage = `[Form Field Converting Error]\nName: ${name}\nValue: ${valueInFormData}\nTarget Type: ${type}\n\nSee: https://github.com/jsun969/just-submit#form-field-converting-error`;
         if (typeof valueInFormData !== 'string') {
-          console.error(errorMessage);
-          formValues[name] = DEFAULT_VALUE_WHEN_ERROR[type];
-          continue;
+          throw new Error(errorMessage);
         }
         const convertFieldFns: ConvertFieldFns = {
           string: (value) => value,
@@ -82,16 +73,14 @@ export const createSubmit = <
           number: (value) => {
             const res = Number(value);
             if (isNaN(res)) {
-              console.error(errorMessage);
-              return DEFAULT_VALUE_WHEN_ERROR['number'];
+              throw new Error(errorMessage);
             }
             return res;
           },
           date: (value) => {
             const res = new Date(value);
             if (isNaN(res.getTime())) {
-              console.error(errorMessage);
-              return DEFAULT_VALUE_WHEN_ERROR['date'];
+              throw new Error(errorMessage);
             }
             return res;
           },
